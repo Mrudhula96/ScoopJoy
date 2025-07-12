@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Mint Chip Chocolate Ice Cream Cake</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Mint Chip Chocolate Ice Cream Cake</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/mint_chip_chocalate_icecream_cake.jpg' %}" alt="mint_chip_chocalate_icecream_cake" class="recipe-img3">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>1 cup flour,1 cup sugar</li>
+      <li>1/3 cup unsweetened cocoa powder</li>
+      <li>1 teaspoons baking soda</li>
+      <li>1/2 cup whole milk </li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. For Chocolate Cake: Preheat oven to 350F. Add flour, sugar, cocoa, baking powder, baking soda, and salt to the bowl of a stand mixer. Combine ingredients. Add milk, vegetable oil, eggs, vanilla, and mix on a low speed until well combined.</p>
+    <p>2. Fill one, greased 2-9 inch cake pan evenly with batter and bake 30-35 minutes until a toothpick inserted in the center of the cake comes out clean. Remove from oven and allow to cool for 5 minutes. Run a knife around the edges of the cake to loosen and turn over onto a wire rack. Cool completely. Slice cake round in half.</p>
+    <p>3. Place cartons of Häagen-Dazs® Mint Chip Ice Cream on the counter for ten minutes and then spread ice cream across the top of the cake and put the second layer of cake on top and place in freezer for 30 minutes. Place the second cake layer on top of the ice cream and repeat with the second carton of ice cream. Place into the freezer to set for around 30 minutes until firm and frozen.</p>
+    <p>4. Remove cake from freezer and quickly pour and spread the chocolate glaze over the cake, covering the top of the cake. Chocolate glaze should be slightly fluid allowing it to be spread easily and quickly. Place in freezer for at least one hour or until serving.</p>
+    <p>5. For Chocolate Glaze: Place the chocolate chips in a medium sized bowl. Bring the cream to a simmer in a small pot on the stove. Add the hot cream to the chocolate chips and stir until chips are melted and allow to cool to room temperature before spreading on top of the cake.</p>
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+
+{% endblock %}
+

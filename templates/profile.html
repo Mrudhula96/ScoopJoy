@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}">
+    <script src="{% static 'js/profile.js' %}" defer></script>
+</head>
+<body>
+
+<div class="profile-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="user-info">
+            <img class="avatar" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/user-avatar.jpg' %}{% endif %}" alt="Profile Picture">
+            <div class="user-meta">
+                <h3>{{ request.user.username }}</h3>
+                <p>{{ request.user.phone }}</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li data-section="orders" class="active">🛒 Orders</li>
+            <li data-section="addresses">📍 Addresses</li>
+            <li data-section="profile">👤 Profile</li>
+        </ul>
+
+        <form method="post" action="{% url 'scoopjoy:logout' %}">
+            {% csrf_token %}
+            <button class="logout-btn">🚪 Log Out</button>
+        </form>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+        <!-- Orders -->
+        <section id="orders" class="section active">
+            <h3>My Orders</h3>
+
+            {% if orders %}
+            <div class="orders-list">
+                {% for order in orders %}
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <strong>Order #{{ order.id }}</strong>
+                            <span class="order-date">{{ order.ordered_at|date:"M d, Y - H:i" }}</span>
+                        </div>
+                        <span class="order-status">{{ order.status }}</span>
+                    </div>
+
+                    <div class="order-items">
+                        {% for item in order.items.all %}
+                        <div class="order-item">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            <div class="item-details">
+                                <p class="item-name">{{ item.product.name }}</p>
+                                <p class="item-qty">Quantity: {{ item.quantity }}</p>
+                            </div>
+                            <p class="item-total">₹{{ item.total_price }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="order-footer">
+                        <p><strong>Total:</strong> ₹{{ order.total }}</p>
+                        <p><strong>Delivered to:</strong> {{ order.address.name }}, {{ order.address.district }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>You haven’t placed any orders yet.</p>
+            {% endif %}
+
+        </section>
+
+        <!-- Addresses -->
+        <section id="addresses" class="section">
+            <h2>Saved Addresses</h2>
+            <button type="button" id="show-address-form" class="add-address-btn">Add Address</button>
+            <div id="address-form-container" style="display: none;">
+                <form method="POST" id="address-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="address_id" id="address-id" />
+                    <h3 id="form-title">Add New Address</h3>
+                    {{ address_form.as_p }}
+                    <button type="submit" name="add_address">Save</button>
+                    <button type="button" id="cancel-address-form">Cancel</button>
+                </form>      
+            </div>
+            <ul class="address-list">
+                {% for address in addresses %}
+                    <li class="address-card">
+                        <div class="address-info">
+                            <span class="address-icon">📍</span> <!-- Placeholder icon; replace with image if needed -->
+                            <div class="address-details">
+                                <strong>{{ address.label|default:"Home" }}</strong> <!-- Label like "Home" -->
+                                <p>{{ address.name }} – {{ address.phone }}<br>{{ address.district}}, {{ address.state }} – {{ address.pin_code }}</p>
+                            </div>
+                        </div>
+                        <div class="address-actions">
+                            <button class="edit-btn" data-address-id="{{ address.id }}">✏️</button>
+                            <a href="{% url 'scoopjoy:delete_address' address.id %}">
+                                <button class="delete-btn" data-address-id="{{ address.id }}">🗑️</button>
+                            </a>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li>No saved addresses yet.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Profile -->
+        <section id="profile" class="section">
+            <h2>Profile Details</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ update_form.as_p }}
+                <button type="submit" name="update_profile" id="save_changes_btn">Save Changes</button>
+                <button type="submit" name="delete_account" class="delete-btn">Delete My Account</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>

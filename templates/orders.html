@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="orders-page">
+    <h2>My Orders</h2>
+
+    {% if orders %}
+        <div class="orders-list">
+            {% for order in orders %}
+            <div class="order-card">
+                <div class="order-header">
+                    <div>
+                        <strong>Order #{{ order.id }}</strong>
+                        <span class="order-date">{{ order.ordered_at|date:"M d, Y - H:i" }}</span>
+                    </div>
+                    <span class="order-status">{{ order.status }}</span>
+                </div>
+
+                <div class="order-items">
+                    {% for item in order.items.all %}
+                    <div class="order-item">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        <div class="item-details">
+                            <p class="item-name">{{ item.product.name }}</p>
+                            <p class="item-qty">Quantity: {{ item.quantity }}</p>
+                        </div>
+                        <p class="item-total">₹{{ item.total_price }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="order-footer">
+                    <p><strong>Total:</strong> ₹{{ order.total }}</p>
+                    <p><strong>Delivered to:</strong> {{ order.address.name }}, {{ order.address.district }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-orders">You haven't placed any orders yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

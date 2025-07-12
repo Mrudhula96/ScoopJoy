@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Raspberry Chocolate Dipped Bars</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+{% block content %}
+  <header>
+    <h1>Raspberry Chocolate Dipped Bars</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/Chocolate-Dipped-Raspberry-Bars.jpg' %}" alt="Chocolate-Dipped-Raspberry-Bars" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>raspberries (fresh or freeze-dried)</li>
+      <li>dark or milk chocolate</li>
+      <li>cocoa butter</li>
+      <li>milkfat</li>
+      <li>emulsifiers like soy lecithin</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. In a large microwave safe bowl, melt chocolate chips and coconut oil in the microwave. Heat at 30 second intervals until softened.</p>
+    <p>2. Dip each Outshine® Raspberry Frozen Fruit Bar in the mixture and coat all sides, the place on a baking sheet lined with parchment paper.</p>
+    <p>3. Sprinkle freeze dried raspberries, chopped pistachios, Valentine’s Day sprinkles, or any toppings of your choice on one side of the bar.</p>
+    <p>4. Once all are complete, transfer to the freezer.</p>
+    <p>5. Once the bars are set, enjoy!</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+{% endblock %}

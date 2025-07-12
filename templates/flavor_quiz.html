@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>ScoopJoy🍦- Flavor Quiz</title>
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/flavor_quiz.css' %}">
+{% endblock %}
+{% block extra_js %}
+    <script>
+        const staticPath = "{% static 'images/' %}";
+    </script>
+    <script src="{% static 'js/flavor_quiz.js' %}" defer ></script>
+{% endblock %}
+{% block content %}
+    <div class="quiz-container">
+        <div id="quiz-content"></div>
+    </div>
+    
+{% endblock %}
+
+

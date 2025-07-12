@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ScoopJoy Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+    <div style="max-width: 600px; background: #fff; padding: 20px; border-radius: 8px; margin: auto;">
+        <h2 style="color: #ff4f81;">Hi {{ user.username }},</h2>
+        <p>Thanks for placing your order with <strong>ScoopJoy</strong>! 🍦</p>
+
+        <h3 style="margin-top: 20px;">🧾 Order Summary</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #eee;">
+                    <th align="left" style="padding: 10px;">Item</th>
+                    <th align="center" style="padding: 10px;">Qty</th>
+                    <th align="right" style="padding: 10px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td style="padding: 10px;">{{ item.product.name }}</td>
+                    <td align="center">{{ item.quantity }}</td>
+                    <td align="right">₹{{ item.total_price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p style="margin-top: 20px; font-size: 16px;"><strong>Total: ₹{{ total }}</strong></p>
+
+        <h3 style="margin-top: 30px;">📍 Delivery Address</h3>
+        <p style="line-height: 1.6;">
+            {{ address.name }}<br>
+            {{ address.address }}<br>
+            {{ address.district }}, {{ address.state }} - {{ address.pin_code }}
+        </p>
+
+        <p style="margin-top: 30px;">We hope you enjoy your treats!<br><strong>– Team ScoopJoy</strong></p>
+    </div>
+</body>
+</html>

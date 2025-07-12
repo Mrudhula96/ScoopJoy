@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Butter Pecan Pancake Ice Cream Sundae</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+{% block content %}
+
+  <header>
+    <h1>Butter Pecan Pancake Ice Cream Sundae</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/butter-pecan-sundae.png' %}" alt="butter-pecan-sundae" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>pancakes, butter pecan ice cream</li>
+        <li>flour, sugar, baking powder</li>
+        <li>milk, eggs, and oil, while the ice cream </li>
+        <li>caramel sauce, whipped cream,</li>
+        <li>chopped pecans, and possibly syrup</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. For Pancakes: In a medium-sized bowl, whisk together dry ingredients. In a separate, medium-sized bowl, whisk together wet ingredients. Slowly whisk wet ingredients into dry ingredients. Continue whisking until pancake batter is even and smooth.</p>
+    <p>2. Pour small rounds of batter (use a 1/2 cup measure to keep pancakes evenly sized) into a pan. Cook until the surface of pancakes have some bubbles and a few have burst (1-2 minutes), flip carefully with a thin spatula and cook until golden brown on the other side (1-2 minutes). Transfer pancake to baking sheet or plate; cover loosely to keep pancakes warm as you prepare the remaining batter.    </p>
+    <p>3. For Salted Maple Caramel: In a medium-sized saucepan with a heat-safe spatula or wooden spoon, pour in sugar and stir on medium heat. The sugar will begin to melt away, liquefy and start browning at the edges of the pan. Continue stirring the sugar around the pan to evenly distribute the heat and colored sugar for 2-3 minutes. When the sugar has fully and evenly taken on a nice, mellow brown caramel color, take it off the heat and add the maple syrup, heavy cream, butter and salt. The mixture will expand, and spit up or release heat so stand back.</p>
+    <p>4. Back on a medium-low heat, continue stirring the mixture until all ingredients are dissolved and mixture is smooth. Transfer to a heat-safe container and allow to cool at room temperature for two hours or in the fridge for at least an hour. You can store it up to a month in a sealed container.</p>
+    <p>5. For Sundae: Assemble your sundaes however you see fit. One option is standing a pancake up on its side in a sundae glass, scooping the Häagen-Dazs® Butter Pecan Ice Cream in the center and drizzling the salted maple caramel on top of both. Or play up the breakfast inspiration angle and create a short stack of pancakes with scoops of Häagen-Dazs® Butter Pecan Ice Cream and salted maple caramel layered between each.</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+{% endblock %}

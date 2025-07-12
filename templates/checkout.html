@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+<style>
+    .place-order-btn {
+        margin-top: 12px;
+        width: 100%;
+        padding: 12px;
+        background: #f23b67;
+        border: none;
+        color: white;
+        font-weight: 600;
+        font-size: 15px;
+        border-radius: 8px;
+        cursor: pointer; /* Add cursor: pointer for hand on hover */
+        transition: background 0.3s ease;
+    }
+    .place-order-btn:hover {
+        background: #e0295a;
+    }
+    .place-order-btn:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/checkout.js' %}?v=20250526" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="checkout-page">
+    <h2>Checkout</h2>
+
+    <div class="checkout-grid">
+        <!-- Order Summary -->
+        <div class="summary-section">
+            <h3>Your Order</h3>
+            <div class="order-items">
+                {% for item in cart_items %}
+                <div class="summary-item">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    <div>
+                        <p><strong>{{ item.product.name }}</strong></p>
+                        <p>{{ item.quantity }} × ₹{{ item.product.price }}</p>
+                    </div>
+                    <p class="item-price">₹{{ item.total_price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <hr>
+            <div class="order-total">
+                <strong>Total: ₹{{ total }}</strong>
+            </div>
+
+            <!-- Default Button -->
+            <button type="button" class="confirm-btn" id="proceedBtn">Add address to proceed</button>
+
+            <!-- Selected Address Section -->
+            <div id="selectedAddressBox" style="display: none; background: #f8f8f8; border-radius: 12px; padding: 16px; margin-top: 20px;">
+                <div id="addressDropdownTrigger" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; cursor: pointer;">
+                    <div style="width: 36px; height: 36px; background: #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="{% static 'images/home.png' %}" alt="Home" style="width: 20px; height: 20px;">
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; font-size: 15px;">
+                            Delivering to <span id="addressLabel">home</span> <span style="font-size: 12px;">▼</span>
+                        </div>
+                        <div id="fullAddressText" style="color: #444; font-size: 14px; max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
+                    </div>
+                </div>
+
+                <button type="submit" form="selectedAddressForm" class="place-order-btn">Place Order</button>
+            </div>
+        </div>
+
+        <!-- Hidden Form to Submit Selected Address -->
+        <form method="post" id="selectedAddressForm" style="display: none;" action="{% url 'scoopjoy:place_order' %}">
+            {% csrf_token %}
+            <input type="hidden" name="selected_address" id="selectedAddressInput">
+        </form>
+    </div>
+</div>
+
+<!-- Address Modal -->
+<div id="addressModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h3>Select Delivery Address</h3>
+
+        <div class="address-grid">
+            {% for address in addresses %}
+            <div class="address-tile" data-id="{{ address.id }}">
+                <div class="tile-header">
+                    <span class="name">{{ address.name }}</span>
+                    <span class="phone">{{ address.phone }}</span>
+                </div>
+                <p>{{ address.district }}, {{ address.state }} - {{ address.pin_code }}</p>
+                <form method="post" class="delivery-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_address" value="{{ address.id }}">
+                    <button type="submit" class="deliver-btn">Deliver Here</button>
+                </form>
+            </div>
+            {% endfor %}
+
+            <!-- Add New Address Tile -->
+            <div class="address-tile add-new-tile" id="addNewTile">
+                <div class="add-icon">+</div>
+                <p>Add New Address</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Address Modal -->
+<div id="addAddressModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeAddAddressModal">&times;</span>
+        <h3>Add New Address</h3>
+        <form id="addAddressForm" method="post" class="styled-address-form">
+            {% csrf_token %}
+            {{ address_form.as_p }}
+            <button type="submit" name="add_address" class="btn-save-address">Save Address</button>
+        </form>
+    </div>
+</div>
+
+<!-- Order Placed Modal -->
+<div id="orderPlacedModal" class="order-modal" style="display: none;">
+    <div class="order-modal-content">
+        <img src="{% static 'images/success.png' %}" alt="Success" />
+        <h3>Order Placed Successfully!</h3>
+        <p>We're getting your order ready.</p>
+    </div>
+</div>
+<audio id="orderSound" src="{% static 'sounds/success.mp3' %}" preload="auto"></audio>
+
+{% endblock %}

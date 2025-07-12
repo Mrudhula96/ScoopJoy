@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>ScoopJoy 🍦 -cart</title>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}?v=20250526" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <h2>Your Cart 🛒</h2>
+    <div class="cart-items">
+        {% for item in cart_items %}
+        <div class="cart-item" data-id="{{ item.product.id }}">
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            <div class="details">
+                <h4>{{ item.product.name }}</h4>
+                <!-- Removed the unit price line: <p>₹{{ item.product.price }}</p> -->
+                <div class="quantity-controls">
+                    <button class="decrement" data-id="{{ item.product.id }}">−</button>
+                    <span>{{ item.quantity }}</span>
+                    <button class="increment" data-id="{{ item.product.id }}">+</button>
+                </div>
+                <p class="item-total">₹{{ item.total_price }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
+    </div>
+
+    <div class="cart-summary">
+        <h3>Total: ₹<span id="cart-total">{{ total }}</span></h3>
+        <a href="{% url 'scoopjoy:checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+</div>
+{% endblock %}

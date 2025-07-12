@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Watermelon Chocolate Dipped Bars</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Watermelon Chocolate Dipped Bars</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/ChocolateSuperFoodDippedWatermelon.jpg' %}" alt="ChocolateSuperFoodDippedWatermelon" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>watermelon, chocolate,</li>
+      <li>toppings like salt. </li>
+      <li> nuts, or seeds</li>
+      <li>Cacao nibs, chia seeds, coconut flakes. </li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. Add the coconut oil and chocolate chips in a microwave safe bowl. Melt for 15-30 seconds in the microwave, or until the chocolate is smooth. Allow the chocolate to cool.</p>
+    <p>2. Dip or drizzle chocolate on 1/2 of each Outshine® Watermelon Frozen Fruit Bars. Set dipped bars on parchment paper.</p>
+    <p>3. Add a mixture of chia seeds, coconut flakes, and cacao nibs to each dipped bar. You may mix and match flavors to your taste!</p>
+    <p>4. Allow bars to set in the freezer and enjoy.</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+
+{% endblock %}
+

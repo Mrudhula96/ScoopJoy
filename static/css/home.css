@@ -1,0 +1,373 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #fff0f5;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.image-container {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100vh;
+    position: relative;
+    display: none;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.slide.active {
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 6px #000;
+    text-align: center;
+    max-width: 80%;
+    animation: fadeIn 1s ease-in-out;
+    z-index: 2;
+    padding: 1rem;
+}
+
+.text-overlay h1 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    margin: 0;
+}
+
+.text-overlay p {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Menu Section Styles */
+.menu-section {
+    padding: 3rem 2rem;
+    background: #fff0f5;
+    text-align: center;
+}
+
+.menu-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: #ff6699;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.menu-section h2::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #ff6f61;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.menu-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.menu-item[data-type="image"] {
+    padding: 0;
+}
+
+.menu-item[data-type="image"] img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 1.2s ease, opacity 1.2s ease;
+}
+
+/* Make visible when JS adds this class */
+.menu-item[data-type="image"] img.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-item[data-type="name"] {
+    background: #f3739d;
+}
+
+.menu-item[data-type="name"] h3 {
+    font-size: 1.2rem;
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: none;
+        padding: 0;
+        width: 100%;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        margin: 0.2rem 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-search {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .nav-search input {
+        width: 100%;
+        max-width: none;
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+
+    .auth-buttons {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+
+    .auth-buttons a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .scoopjoy-btn {
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .slider {
+        height: 85vh;
+    }
+
+    .slide {
+        height: 85vh;
+    }
+
+    .text-overlay {
+        max-width: 90%;
+    }
+
+    .text-overlay h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .text-overlay p {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+    }
+
+    .menu-section {
+        padding: 2rem 1rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 0;
+    }
+
+    .menu-item {
+        height: 150px;
+    }
+
+    .menu-item[data-type="name"] h3 {
+        font-size: 1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.3rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .dropdown-menu {
+        font-size: 0.8rem;
+    }
+
+    .nav-search input {
+        font-size: 0.7rem;
+        padding: 0.2rem;
+    }
+
+    .auth-buttons a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .scoopjoy-btn {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .slider {
+        height: 80vh;
+    }
+
+    .slide {
+        height: 80vh;
+    }
+
+    .text-overlay {
+        max-width: 95%;
+    }
+
+    .text-overlay h1 {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .text-overlay p {
+        font-size: clamp(0.8rem, 1.5vw, 1rem);
+    }
+
+    .menu-section {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .menu-item {
+        height: 120px;
+    }
+
+    .menu-item[data-type="name"] h3 {
+        font-size: 0.9rem;
+    }
+}
+.explore-button-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.explore-menu-btn {
+    background-color: #ff6699;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.explore-menu-btn:hover {
+    background-color: #ff3366;
+    transform: scale(1.05);
+}

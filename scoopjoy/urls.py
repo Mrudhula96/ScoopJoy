@@ -1,0 +1,41 @@
+from django.urls import path
+from .import views
+
+app_name = 'scoopjoy'
+
+urlpatterns = [
+    path('', views.home_view, name='home'),
+    path('history/', views.history_view, name='history'),
+    path('recipes/', views.recipes, name='recipes'),
+    path('recipes/<int:recipe_id>/', views.recipe_detail, name='recipe_detail'),
+    path('recipes/main/', views.recipes_view, name='recipes_main'),
+    path('signup/', views.signup_view, name='signup'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('profile/', views.profile_view, name='profile'),
+    path('quiz/', views.quiz_landing, name='quiz_landing'),
+    path('flavor-quiz/', views.flavor_quiz, name='flavor_quiz'),
+    path('sticks/', views.sticks, name='sticks'),
+    path('cones/', views.cones, name='cones'),
+    path('tubs/', views.tubs, name='tubs'),
+    path('all-flavors/', views.all_flavors, name='all_flavors'),
+    path('cart/', views.cart_view, name='cart'),
+    path('cart/count/', views.cart_count, name='cart_count'),
+    path('cart/items/', views.cart_items_view, name='cart_items'),
+    path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/update/<int:product_id>/', views.update_quantity, name='update_quantity'),
+    path('checkout/', views.checkout_view, name='checkout'),
+    path('get-address/<int:address_id>/', views.get_address, name='get_address'),
+    path('delete-address/<int:address_id>/', views.delete_address, name='delete_address'),
+    path("place-order/", views.place_order, name="place_order"),
+    path("orders/", views.orders_view, name="orders"),
+    path("api/search/", views.search_api, name="search_api"),
+    path("product/<int:id>/", views.product_detail, name="product_detail"),
+    path('auth/password/reset/', views.password_reset, name='password_reset'),
+    path('auth/send-otp/', views.send_otp, name='send_otp'),
+    path('auth/verify-otp/', views.verify_otp, name='verify_otp'),
+    path('auth/password/reset/confirm/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
+    path("api/check-auth/", views.check_auth, name="check_auth"),
+    path('api/products/', views.products_api, name='products_api'),
+    path('menu/', views.menu_page, name='menu'),
+]

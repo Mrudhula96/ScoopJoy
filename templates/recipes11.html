@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Caramelized Banana Split Rum Salted Caramel</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+{% block content %}
+
+  <header>
+    <h1>Caramelized Banana Split Rum Salted Caramel</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/caramelized banna split rum salted caramel.jpg' %}" alt="caramelized" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>caramelized bananas,</li>
+      <li>rum, salted caramel sauce</li>
+      <li>ice cream, and optional toppings like nuts</li>
+      <li>whipped cream</li>
+      <li>maraschino cherries</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. Carefully cut bananas in half lengthwise. Melt butter in medium-sized skillet, add brown sugar, and place banana halves on top, cut side up.</p>
+    <p>2. Cook for about 30 seconds on medium-high. Add rum, cook for 30 more seconds, and then carefully turn bananas over and cook for 1-2 minutes more, basting occasionally with the sauce. Remove from heat.    </p>
+    <p>3. Place one banana-half in the bottom of the bowl along the edge. Top with another banana-half at a 45-degree angle.</p>
+    <p>4. Top bananas with 2 scoops Häagen-Dazs® Rum Raisin Ice Cream. Top ice cream with salted caramel sauce (directions below). Add toasted pecans, sweetened whipped cream, and a maraschino cherry.</p>
+    <p>5. Salted Caramel Sauce: Combine brown sugar, cream, and salt in a medium-sized saucepan over medium heat. Cook until thickened (about 5-7 minutes). Add vanilla, stir, and let cool for a few minutes. Store leftovers in a glass jar. </p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+{% endblock %}
+

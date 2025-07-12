@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.logo .scoopjoy-btn {
+    background: #ff6699;
+    color: white;
+    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(1rem, 2.5vw, 1.5rem);
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.scoopjoy-btn:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6699;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.dropdown-toggle:hover {
+    color: #ff6699;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 100%;
+    left: 0;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    min-width: 150px;
+    z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0.2rem 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.3rem 1rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    color: #ff6699;
+}
+
+.nav-search {
+    display: flex;
+    align-items: center;
+    margin-left: clamp(0.5rem, 2vw, 1rem);
+}
+
+.nav-search input {
+    padding: clamp(0.3rem, 1.5vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+    border: 2px solid #ff6699;
+    border-radius: 20px;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    outline: none;
+    width: clamp(150px, 40vw, 200px);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;  /* <-- Important to vertically center content */
+    gap: clamp(0.3rem, 1.5vw, 0.5rem);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.3rem, 1.5vw, 0.5rem); /* Ensures spacing between profile and logout */
+}
+
+
+.auth-buttons a {
+    padding: clamp(0.5rem, 1.5vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+}
+
+.login-btn {
+    color: #ff6699;
+    border: 2px solid #ff6699;
+}
+
+.signup-btn {
+    background: #ff6699;
+    color: white;
+}
+
+.profile-btn {
+    background-color: #ff6699;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.profile-btn:hover {
+    background-color: #ff3366;
+}
+
+.logout-btn {
+    color: #ff6699;
+    border: 2px solid #ff6699;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: #ff6699;
+    color: white;
+}
+
+.cart-icon {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    color: hotpink;
+    margin-left: clamp(0.5rem, 2vw, 1rem);
+}
+
+.cart-icon i {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    color: hotpink;
+}
+
+.cart-count {
+    position: absolute;
+    top: clamp(3px, -1vw, -6px);
+    right: clamp( 9px, -1vw, -6px);
+    background-color: red;
+    color: white;
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+    font-weight: bold;
+    padding: 1px 3px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 14px;
+    height: 14px;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.cart-buttons .decrement-cart:hover,
+.cart-buttons .add-to-cart:hover {
+    opacity: 0.85;
+}
+
+#searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#searchResults li {
+    padding: clamp(0.5rem, 2vw, 0.8rem);
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#searchResults li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+}
+
+#searchResults li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: clamp(0.3rem, 1.5vw, 0.5rem);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background: #f9f9f9;
+        padding: 0.5rem 1rem;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .nav-search {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .nav-search input {
+        width: 100%;
+        max-width: none;
+    }
+
+    .auth-buttons {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: clamp(0.2rem, 1vw, 0.3rem);
+    }
+
+    .nav-links a {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+    }
+
+    .dropdown-menu a {
+        font-size: clamp(0.6rem, 2vw, 0.8rem);
+    }
+
+    .nav-search input {
+        font-size: clamp(0.6rem, 2vw, 0.7rem);
+        padding: clamp(0.2rem, 1vw, 0.3rem);
+    }
+
+    .auth-buttons a {
+        font-size: clamp(0.6rem, 2vw, 0.7rem);
+        padding: clamp(0.2rem, 1vw, 0.3rem) clamp(0.5rem, 1.5vw, 0.6rem);
+    }
+
+    .scoopjoy-btn {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        padding: clamp(0.2rem, 1vw, 0.3rem) clamp(0.5rem, 1.5vw, 0.8rem);
+    }
+
+    .cart-icon {
+        font-size: clamp(1.2rem, 3.5vw, 1.4rem);
+    }
+
+    .cart-icon i {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    .cart-count {
+        top: clamp(-6px, -1vw, -5px);
+        right: clamp(-6px, -1vw, -5px);
+        font-size: clamp(0.4rem, 1.5vw, 0.6rem);
+        min-width: 12px;
+        height: 12px;
+    }
+
+    .cart-buttons {
+        gap: 6px;
+    }
+}
+.footer {
+    background: linear-gradient(to right, #ff99aa, #ff6699);
+    color: white;
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.footer-logo h3 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo p {
+    font-size: 1rem;
+    color: #fff0f5;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 0.5rem 0;
+}
+
+.footer-links a {
+    color: #fff0f5;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffe6e9;
+}
+
+.footer-social .social-icons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.footer-social i {
+    font-size: 1.4rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.footer-social i:hover {
+    transform: scale(1.2);
+    color: #ffe6e9;
+}
+
+.footer-bottom {
+    border-top: 1px solid #fff0f5;
+    padding-top: 1rem;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #fff0f5;
+    margin: 0;
+}

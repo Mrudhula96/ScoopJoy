@@ -1,0 +1,369 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f6f7fb;
+}
+
+.profile-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.user-meta h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.user-meta p {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.menu li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: 0.2s ease;
+}
+
+.menu li:hover,
+.menu li.active {
+    background: #f1f1f1;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ffecec;
+    border: none;
+    color: #e00;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 2rem;
+    background: #fff;
+    overflow-y: auto;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.delete-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.add-address-btn,
+.submit-address-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.add-address-btn,
+.submit-address-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.add-address-btn:hover,
+.submit-address-btn:hover {
+    background: #45a049;
+}
+
+.cancel-btn {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
+}
+/* Address Form Container */
+#address-form-container {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 600px; /* Limits form width for readability */
+}
+
+/* Form Elements */
+#address-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between form fields */
+}
+
+#address-form-container p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#address-form-container label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+#address-form-container input {
+    width: 300px; /* Fixed width */
+    height: 40px; /* Fixed height for inputs */
+    padding: 8px; /* Adjusted padding to fit fixed height */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box; /* Ensures padding doesn't increase dimensions */
+}
+
+#address-form-container textarea {
+    width: 300px; /* Fixed width */
+    height: 100px; /* Fixed height for textarea, larger for multiline */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+    resize: none; /* Prevents resizing to maintain fixed height */
+}
+
+#address-form-container input:focus,
+#address-form-container textarea:focus {
+    outline: none;
+    border-color: #4CAF50; /* Matches button color */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+/* Button Container for Save and Cancel */
+#address-form-container .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    #address-form-container {
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    #address-form-container input,
+    #address-form-container textarea {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 300px; /* Prevents exceeding fixed width */
+        height: 40px; /* Maintain fixed height for inputs */
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    #address-form-container textarea {
+        height: 100px; /* Maintain fixed height for textarea */
+    }
+
+    #address-form-container label {
+        font-size: 0.9rem;
+    }
+}
+.errorlist {
+    color: #e00;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    list-style: none;
+    padding: 0;
+}
+#address-form-container {
+    animation: fadeIn 0.3s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Address Card Styling */
+.address-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.address-info {
+    display: flex;
+    align-items: center;
+}
+
+.address-icon {
+    width: 24px;
+    height: 24px;
+    background: #6a0dad; /* Purple from image */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.address-details {
+    line-height: 1.4;
+}
+
+.address-details strong {
+    color: #6a0dad; /* Matches icon color */
+    font-size: 1.1rem;
+}
+
+.address-details p {
+    margin: 0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.address-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    transition: color 0.2s ease;
+    color: black;
+}
+
+.edit-btn:hover {
+    color: #6a0dad;
+}
+
+.delete-btn:hover {
+    color: #e00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .address-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .address-info {
+        margin-bottom: 10px;
+    }
+
+    .address-actions {
+        margin-left: 34px; /* Aligns with icon width + margin */
+    }
+}
+
+.address-card.deleting {
+    animation: fadeOut 0.3s ease-out;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+#address-form button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+#address-form button[type="submit"] {
+    background-color: #f56eb1; 
+    color: white;
+}
+
+#address-form button[type="submit"]:hover {
+    background-color: #de63a1;
+}
+
+#cancel-address-form {
+    background-color: #fd55b4;
+    color: white;
+}
+
+#cancel-address-form:hover {
+    background-color: #ec68ac;
+}
+#save_changes_btn{
+    background-color: #f56eb1; 
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    width: 110px;
+    height: 30px;
+    margin-right: 20px;
+}

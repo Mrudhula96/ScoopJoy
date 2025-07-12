@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Mexican Hot Chocolate Ice Cream Sandwiches</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+{% block content %}
+  <header>
+    <h1>Mexican Hot Chocolate Ice Cream Sandwiches</h1>
+  </header>
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/MexicanHotChocolateIceCreamSandwiches.jpg' %}" alt="MexicanHotChocolateIceCreamSandwiches" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li> Milk, cream, sugar</li>
+      <li>corn syrup</li>
+      <li>cocoa processed with alkal</li>
+      <li>Natural Flavor</li>
+      <li> guar gum, cellulose gel</li>
+    </ul>
+
+    <h2>Instructions</h2>
+    <p>1. Preheat oven to 325F. Combine flour, cocoa, salt, cayenne, cinnamon, and baking powder. Set aside.</p>
+    <p>2. Mix butter with brown sugar and beat on medium high until light and fluffy (about 3 minutes). Beat in egg and vanilla until well mixed. Reduce speed to low and add dry mixture. Stir in chocolate.</p>
+    <p>3. Scoop 2 ounce balls of dough, flatten slightly, and coat with turbinado sugar. Bake for 9-11 minutes or until surface cracks slightly. Allow to cool.</p>
+    <p>4. Slice the pint of Dulce de Leche horizontally, remove cardboard, and place the round discs between cooled cookies.</p>
+    <p>5. Roll the outside of the sandwiches in the crushed cinnamon candy if desired.</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+{% endblock %}
+
+

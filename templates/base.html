@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Document</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</head>
+<body>
+    
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="menu-toggle">☰</div>
+    <div class="logo">
+        <a href="{% url 'scoopjoy:home' %}"><button class="scoopjoy-btn">ScoopJoy 🍦</button></a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="{% url 'scoopjoy:home' %}">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Experience Ice Cream</a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'scoopjoy:quiz_landing' %}">Find Your Flavor</a></li>
+                <li><a href="{% url 'scoopjoy:history' %}">History</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Brands</a>
+            <ul class="dropdown-menu">
+                <li><a href="https://amul.com/products/icecream.php">Amul</a></li>
+                <li><a href="https://www.kwalitywalls.in/home.html">Kwality Walls</a></li>
+                <li><a href="https://naturalicecreams.in/">Naturals</a></li>
+            </ul>
+        </li>
+        <li><a href="{% url 'scoopjoy:recipes_main' %}">Recipes</a></li>
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle">Products</a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'scoopjoy:sticks' %}">Ice Cream Sticks</a></li>
+                <li><a href="{% url 'scoopjoy:cones' %}">Ice Cream Cones</a></li>
+                <li><a href="{% url 'scoopjoy:tubs' %}">Tubs</a></li>
+                <li><a href="{% url 'scoopjoy:all_flavors' %}">All Flavors</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Search Bar -->
+    <div class="nav-search">
+        <form id="search-form" autocomplete="off">
+            <input type="text" id="searchInput" placeholder="Search Flavors...">
+        </form>
+        <ul id="searchResults"></ul>
+    </div>
+    
+    
+    <div class="auth-buttons">
+        {% if user.is_authenticated %}
+            <div class="user-actions">
+                <a href="{% url 'scoopjoy:profile' %}" class="profile-btn">Profile</a>
+                <a href="{% url 'scoopjoy:logout' %}" class="logout-btn">Logout</a>
+            </div>
+            <a href="{% url 'scoopjoy:cart' %}" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+            
+
+        {% else %}
+            <a href="{% url 'scoopjoy:login' %}" class="login-btn">Login</a>
+            <a href="{% url 'scoopjoy:signup' %}" class="signup-btn">Signup</a>
+        {% endif %}
+    </div>     
+</nav>
+    {% block content %}
+    {% endblock%}
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>ScoopJoy 🍦</h3>
+                <p>Bringing joy, one scoop at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'scoopjoy:home' %}">Home</a></li>
+                    <li><a href="{% url 'scoopjoy:menu' %}">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ScoopJoy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

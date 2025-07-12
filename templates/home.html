@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>ScoopJoy 🍦</title>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<!-- Image Slider -->
+<div class="slider">
+    <div class="image-container">
+        <div class="slide active">
+            <img src="{% static 'images/background1.jpg' %}" alt="Ice Cream Journey">
+            <div class="text-overlay">
+                <h1>Sweet Journey Awaits 🍦</h1>
+                <p>Explore the rich history and love for ice cream worldwide.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/background.png' %}" alt="Flavors">
+            <div class="text-overlay">
+                <h1>Flavors That Melt Hearts</h1>
+                <p>Discover your perfect scoop from classic vanilla to exotic mango.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/chocolate.jpg' %}" alt="Chocolate Ice Cream">
+            <div class="text-overlay">
+                <h1>Every Bite a Story</h1>
+                <p>Crafted with care, ice cream is joy in every spoonful!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Menu Section -->
+<section class="menu-section">
+    <h2>The Menu</h2>
+    <div class="menu-grid">
+        <!-- Row 1: Starts with image -->
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/AlmondDelightStick.jpg' %}" alt="Almond Delight" onerror="console.error('Failed to load image: books.jpg')">
+        </div>
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Almond Delight Stick</h3>
+        </div>
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/BerryBlissCone.jpg' %}" alt="Berry Bliss" onerror="console.error('Failed to load image: bold.jpg')">
+        </div>
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Berry Bliss</h3>
+        </div>
+        <!-- Row 2: Starts with name -->
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Choco Chrunch Stick</h3>
+        </div>
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/ChocoCrunchStick.jpg' %}" alt="Choco Crunch" onerror="console.error('Failed to load image: books.jpg')">
+        </div>
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Fruity Fusion</h3>
+        </div>
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/FruityFusionStick.jpg' %}" alt="Fruity Fusion" onerror="console.error('Failed to load image: books.jpg')">
+        </div>
+        <!-- Row 3: Starts with image -->
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/BerryBonanzatub.jpg' %}" alt="Berry Bonanza" onerror="console.error('Failed to load image: books.jpg')">
+        </div>
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Berry Bonanza</h3>
+        </div>
+        <div class="menu-item menu-image" data-type="image">
+            <img src="{% static 'icecream_images/MintChocolateChipStick.webp' %}" alt="Mint Choco Chip" onerror="console.error('Failed to load image: books.jpg')">
+        </div>
+        <div class="menu-item menu-name" data-type="name">
+            <h3>Mint Choco Chip</h3>
+        </div>
+    </div>
+    <div class="explore-button-container">
+        <a href="{% url 'scoopjoy:menu' %}" class="explore-menu-btn">Explore Full Menu</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>History of Ice Cream</title>
+{% endblock %}
+{% block extra_css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightskyblue;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .text{
+            margin: 0;
+            padding-left: 1%;
+        }
+        .icecream{
+            width: 100%;
+            padding-left: 15%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .icecream_2{
+            width: 40%;
+            padding-right: 0.5%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .old_history{
+            width: 25%;
+            padding-right:3%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .icecream_1770{
+            width: 70%;
+            padding-right: 5%;
+            height: auto;
+            border-radius: 30px;
+            
+        }
+        .icecream_1880{
+            width: 40%;
+            padding-right: 5%;
+            height: auto;
+            border-radius: 30px;
+            
+        }
+        .icecream_1330s{
+            width: 70%;
+            padding-left: 15%;
+            height: auto;
+            border-radius: 30px
+        }
+        .kids_icecream{
+            width: 150%;
+            padding-right: 1%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .icecream_1840{
+            width: 35%;
+            padding-left: 15%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .old_history_1929{
+            width: 55%;
+            padding-right: 5%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .icecream_1904{
+            width: 38%;
+            padding-left: 1%;
+            height: auto;
+            border-radius: 30px;
+        }
+        .icecream_1984{
+            width: 98%;
+            padding-right: 3%;
+            height: auto;
+            border-radius: 30px;
+        }
+        header {
+            background-color: skyblue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color:palevioletred;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        h4 {
+            color: yellow;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        img {
+            max-width: 50%;  /* Resize to 80% of the parent container */
+            height: auto;    /* Maintain aspect ratio */
+            display: block;
+            margin: 0 auto;  /* Center the image */
+        }
+        .history-section {
+            margin-top: 20px;
+        }
+        </style>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('active');
+    }
+    
+    // Optional: Close menu on link click (for mobile)
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".nav-links a").forEach(link =>
+            link.addEventListener("click", () => {
+                document.getElementById("navLinks").classList.remove("active");
+            })
+        );
+    });
+    </script>
+{% endblock %}
+{% block content %}
+<header>
+    <h1>The History of Ice Cream</h1>
+</header>
+
+<section>
+    <h2>Ancient Beginnings</h2>
+    <img src="../static/images/icecream_history.png" alt="icecream_history" >
+    <br>
+    <br>
+    <center><p style="font-size: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The first origins of ice cream trace back to ancient civilizations. The Ancient Greeks, for instance, enjoyed a sweet, icy treat made from snow and honey.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>Marco Polo Brings Ice Cream to Europe</h2>
+    <img src="../static/images/icecream_1330s.png" alt="icecream3" class="icecream_2">
+    <br>
+    <br>
+   <center><p style="font-size: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">In the 1300s, Marco Polo introduced a version of ice cream to Europe after traveling to Asia, marking the beginning of the spread of this delicious treat across continents.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>The Birth of Ice Cream Parlors</h2>
+    <img src="../static/images/old_history_newyork.jpg" alt="old_history_newyork" class="icecream_2">
+    <br>
+    <br>
+    <center><p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The first ice cream parlor in America opened in New York in 1776, cementing ice cream as a popular treat in the United States.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>Innovation and Mass Production</h2>
+    <img src="../static/images/old_history_icecream3.jpg" alt="old_history_icecream3" class="icecream_2">
+    <br>
+    <br>
+    <center><p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The invention of the ice cream churn in the 1800s helped to mass-produce the treat, making it more accessible to the general public.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>The Waffle Cone and Sundae</h2>
+    <img src="../static/images/icecream3.jpg" alt="icecream3" class="icecream_1904">
+    <br>
+    <br>
+    <center><p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The iconic waffle cone made its debut at the 1904 World’s Fair, and the ice cream sundae became a beloved dessert in the 1880s.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>Modern Ice Cream</h2>
+    <img src="../static/images/purple1.jpg" alt="purple1" class="icecream_1904">
+    <br>
+    <br>
+    <center><p style="font-size: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Today, ice cream continues to evolve with countless flavors and innovations, such as vegan and lactose-free options, as well as premium brands like Häagen-Dazs.</p></center>
+</section>
+
+<section class="history-section">
+    <h2>modern ice cream</h2>
+    <div class="container">
+        <p style="font-size: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">The first ice cream parlor in America opened in New York in 1776, cementing ice cream as a popular treat in the United States.</p>
+        <img src="../static/images/black1.jpg" alt="black1" class="icecream">
+    </div>
+</section>
+<section class="history-section">
+    <h2>5th Century B.C.</h2>
+    <div class="container">
+        <img src="../static/images/old_history1.jpg" alt="old_history1" class="old_history">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Once upon a time
+            Ancient Greeks enjoy a dessert similar to ice cream. And this is where our story begins!</p>
+            
+    </div>
+</section>
+<section class="history-section">
+    <h2>1300s  Icecream, ho!</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Ice cream, ho!
+            Marco Polo brings an early form of ice cream to Europe. We imagine the popular pool game started with ice cream-craving fans searching in the night for Marco! (Polo!)</p>
+            <img src="../static/images/icecream_1330s.png" alt="icecream_1330s" class="old_history">
+    </div>
+</section>
+<section class="history-section">
+    <h2>1700s   Ooo,fancy!</h2>
+    <div class="container">
+        <img src="../static/images/icecream_1770s.jpg" alt="icecream_1770s" class="icecream_1770">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Ooo, fancy!
+            Ice Cream is introduced to America as a delicacy enjoyed by high society due to its expensive ingredients and lack of available refrigerators.</p>
+            
+    </div>
+</section>
+<section class="history-section">
+    <h2>1776   Open for business!</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Open for business!
+            America's first ice cream parlor opens its doors in New York. And you thought lines were bad today...</p>
+            <img src="../static/images/icecream_1776.jpg" alt="icecream_1776" class="icecream_1770">
+    </div>
+</section>
+<section class="history-section">
+    <h2>1840s A labour of love!</h2>
+    <div class="container">
+        <img src="../static/images/icecream1840s.jpg" alt="icecream_1840s" class="icecream_1770">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">A labor of love!
+            Now that's what we call mass production. The ice cream churn is invented, and now we can make ice cream by the bucket!</p>
+            
+    </div>
+</section>
+<section class="history-section">
+    <h2>1851  First ice creamm plant</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">First ice cream plant
+            Doors open to one of the sweetest buildings ever - the very first ice cream plant.</p>
+            <img src="../static/images/icecream1851.jpg" alt="icecream_1851" class="icecream_1770">
+    </div>
+</section>
+<section class="history-section">
+    <h2>1880s  what a scoop</h2>
+    <div class="container">
+        <img src="../static/images/icecream1880s.png" alt="icecream_1880s" class="icecream_1880">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">What a scoop
+            Get your fixin's and grab your bowls! The ice cream sundae is born.</p>
+            
+    </div>
+</section>
+<section class="history-section">
+    <h2>1904 Hello Drumstick</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Hello Drumstick!
+            Rumor has it, the waffle cone makes its debut at the world's fair in St. Louis, Mo. after an ice cream vendor ran out of bowls. Good thing the waffle maker stepped in to help!</p>
+            <img src="../static/images/icecream1904.jpg" alt="icecream_1904" class="icecream">
+    </div>
+</section>
+<section class="history-section">
+    <h2>1929 Things got rocky</h2>
+    <div class="container">
+        <img src="../static/images/old_history_icecream3.jpg" alt="old_history_icecream3" class="old_history_1929">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Things got rocky
+            William Dreyer and Joseph Edy create Rocky Road ice cream! It joins vanilla, chocolate and strawberry as most widely available flavors.</p>
+           
+    </div>
+</section>
+<section class="history-section">
+    <h2>1960s(ish) Haagen-Dazs</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Häagen-Dazs
+            William Dreyer and Joseph Edy create Rocky Road ice cream! It joins vanilla, chocolate and strawberry as most widely available flavors.</p>
+            <img src="../static/images/production_icecream.jpg" alt="production_icecream" class="icecream">
+    </div>
+</section>
+<section class="history-section">
+    <h2>1984 Start the fireworks</h2>
+    <div class="container">
+        <img src="../static/images/child2.jpg" alt="child" class="icecream_1984">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">Start the fireworks
+            July is declared National Ice Cream Month, but you can still enjoy it all year long!</p>
+            
+    </div>
+</section>
+<section class="history-section">
+    <h2>2025 For the love of ice cream</h2>
+    <div class="container">
+        <p style="font-size: 24px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="text">For the love of ice cream
+            90% of freezers in the USA are chilling ice cream, making it the best selling treat in America next to cookies! Make sure your freezer does, too!</p>
+            <img src="../static/images/kids_icecream1.jpg" alt="kids_icecream1" class="kids_icecream">
+    </div>
+</section>
+{% endblock %}

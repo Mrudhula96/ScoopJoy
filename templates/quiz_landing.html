@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>Flavor Quiz</title>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/quiz_landing.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="quiz-landing-container">
+    <div class="quiz-text-section">
+      <h1>Find your new<br>fave flavor.</h1>
+      <p>Just six questions stand between<br>you and bliss.</p>
+      <a href="{% url 'scoopjoy:flavor_quiz' %}" class="start-quiz-btn">Take the quiz →</a>
+    </div>
+    <div class="quiz-image-section"></div>
+</div>
+{% endblock %}

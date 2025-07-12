@@ -1,0 +1,143 @@
+/* Background Image */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Form Container */
+.signup-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 90%;
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Close Button */
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    background-color: lightcoral;
+    color: white;
+}
+
+/* Heading */
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: #f8b195;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    color: #fcd5ce;
+}
+
+.form-group input {
+    padding: 10px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+}
+
+/* Password container (for eye icon) */
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 37px;
+    right: 10px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Password Rules */
+.password-rules {
+    display: none;
+    font-size: 13px;
+    color: #ffcccb;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 5px;
+}
+
+/* Show password rules only when typing */
+input:focus + .password-rules {
+    display: flex;
+}
+
+/* Button */
+.signup-btn {
+    width: 100%;
+    background-color: #ff4d88;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #e6457a;
+}
+
+/* Link text */
+.signup-container p {
+    text-align: center;
+    margin-top: 15px;
+    color: #fcd5ce;
+}
+
+.signup-container a {
+    color: #ff4d88;
+    text-decoration: none;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+}

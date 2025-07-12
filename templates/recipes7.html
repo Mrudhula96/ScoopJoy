@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Lemon Frose</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Lemon Frose</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/lemon frose.jpg' %}" alt="lemon" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>water, surfactants</li>
+      <li>zinc pyrithione,</li>
+      <li>dimethicone</li>
+      <li> fragrances</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. Using a high speed blender, add 3 Outshine® Lemon Frozen Fruit Bars, frozen strawberries and 1/4 cup of water as needed. Blend until smooth.</p>
+    <p>2. Pour into a short glass.</p>
+    <p>3. Top with a lemon slice and a fresh Outshine® Lemon Frozen Fruit Bar.</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+{% endblock %}
+

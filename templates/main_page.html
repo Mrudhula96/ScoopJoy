@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Recipes</title>
+{% endblock %}
+{% block extra_css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightskyblue;
+            margin: 0;
+            padding: 0;
+            animation: backgroundChange 5s ease-in-out infinite;
+        }
+
+        h1, h2 {
+            color: black;
+            font-size: 1.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @keyframes backgroundChange {
+            0% {
+                background-color: yellow;
+            }
+            50% {
+                background-color: magenta;
+            }
+            100% {
+                background-color: lightskyblue;
+            }
+        }
+
+        @keyframes combinedAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        img, video {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            animation: combinedAnimation 10s ease-in-out;
+        }
+
+        p {
+            font-size: 24px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: palevioletred;
+            color: white;
+            font-size: 1.0em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: darkviolet;
+        }
+        .footer{
+            margin-top: 30px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>The Recipes of Ice Cream</h1>
+    </header>
+
+    <section>
+        <video src="{% static 'images/icream_vedio.mp4' %}"  autoplay loop muted>
+            Your browser does not support the video tag.
+        </video>
+        <p>Perfect recipes for any and all occasions.</p>
+    </section>
+
+    <div class="button-container">
+        <a href="{% url 'scoopjoy:recipes' %}" class="btn">Recipe Page →</a>
+    </div>
+{% endblock %}
+

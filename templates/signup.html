@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="{% static 'js/signup.js' %}" defer></script>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Close button as anchor tag -->
+        <a href="{% url 'scoopjoy:home' %}" class="close-btn">&times;</a>
+
+        <h2>Create an Account 🍦</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Username -->
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+                {% for error in form.phone.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Password1 -->
+            <div class="form-group password-container">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <i class="fa-solid fa-eye toggle-password" data-target="id_password1"></i>
+                {% for error in form.password1.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Password Rules -->
+            <div id="password-rules" class="password-rules">
+                <span>Min 8 chars,</span>
+                <span>One uppercase,</span>
+                <span>One lowercase,</span>
+                <span>One number</span>
+            </div>
+
+            <!-- Password2 -->
+            <div class="form-group password-container">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                <i class="fa-solid fa-eye toggle-password" data-target="id_password2"></i>
+                {% for error in form.password2.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Non-field errors (e.g. password mismatch) -->
+            {% if form.non_field_errors %}
+                <div class="error">
+                    {% for error in form.non_field_errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="signup-btn">Signup</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'scoopjoy:login' %}">Login here</a></p>
+    </div>
+</body>
+</html>

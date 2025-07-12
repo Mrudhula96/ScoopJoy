@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  <title>Recipe Page</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Delicious Recipes</h1>
+    <p>Discover some of the best recipes for every meal!</p>
+  </header>
+
+  <div class="recipe-container">
+    <!-- Recipe 1 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/vanilla_icecream_brownie.jpg' %}" alt="vanilla_icecream_brownie" class="recipe-img">
+      <h2>Vanilla Ice Cream Brownie Bars</h2>
+      <p class="description">combine the richness of chocolate brownies with the cool, creamy sweetness of vanilla ice cream.</p>
+      <ul class="ingredients">
+        <li>sugar, flour, eggs, butter</li>
+        <li>chocolate (cocoa powder or chocolate chips).</li>
+        <li> milk, cream, sugar, and vanilla extract or essence. </li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 1 %}">
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+
+    <!-- Recipe 2 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/Peppermint-Bark-Ice-Cream-Float.webp' %}" alt="Peppermint-Bark-Ice-Cream-Float" class="recipe-img">
+      <h2>Peppermint Bark Ice Cream Float</h2>
+      <p class="description">Rich hot chocolate wraps around peppermint bark ice cream in this decadent winter weather float that keeps you cozy all season long.</p>
+      <ul class="ingredients">
+        <li>1/2 cup cocoa powder </li>
+        <li>1/2 cup sugar,2 cups whole milk</li>
+        <li>4 ounces dark chocolate,1/2 teaspoon kosher salt</li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 2 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+    <div class="recipe-card">
+        <img src="{% static 'images/mint_chip_chocalate_icecream_cake.jpg' %}" alt="mint_chip_chocalate_icecream_cake" class="recipe-img">
+        <h2>Mint Chip Chocolate Ice Cream Cake</h2>
+        <p class="description">Refreshing and sweet mint chip ice cream with layers and layers of fluffy chocolate.</p>
+        <ul class="ingredients">
+          <li>1 cup flour,1 cup sugar</li>
+          <li>1/3 cup unsweetened cocoa powder</li>
+          <li>1 teaspoons baking soda</li>
+          <li>1/2 cup whole milk </li>
+        </ul>
+        <!-- Link to the detailed recipe page -->
+        <a href="{% url 'scoopjoy:recipe_detail' 3 %}">
+
+          <button class="recipe-btn">Read More</button>
+        </a>
+      </div>
+  </div>
+  <br>
+  <br>
+
+
+  <div class="recipe-container">
+    <!-- Recipe 1 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/ChocolateSuperFoodDippedWatermelon.jpg' %}" alt="ChocolateSuperFoodDippedWatermelon" class="recipe-img">
+      <h2>Watermelon Chocolate Dipped Bars</h2>
+      <p class="description">Indulge in the goodness of superfood chocolate dipped watermelon bars. Made with real fruit and topped with a mixture of chia seeds, ...</p>
+      <ul class="ingredients">
+        <li>watermelon, chocolate,</li>
+        <li>toppings like salt. </li>
+        <li> nuts, or seeds</li>
+        <li>Cacao nibs, chia seeds, coconut flakes. </li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 4 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+
+    <!-- Recipe 2 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/FruityStrawberryMangoIceCreamPie.jpg' %}" alt="FruityStrawberryMangoIceCreamPie" class="recipe-img">
+      <h2>Fruity Strawberry Mango Ice Cream pie</h2>
+      <p class="description">Mango ice cream and fresh strawberries come together to satisfy your craving for a fresh and fruity dessert.</p>
+      <ul class="ingredients">
+        <li>2 cups fresh sliced strawberries</li>
+        <li>Whipped cream</li>
+        <li>1/2 cup of butter</li>
+        <li>1/3 cup of sugar</li>
+        <li>1/4 teaspoons almond extract</li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 5 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+    <div class="recipe-card">
+        <img src="{% static 'images/haggen _dazs_perfect_affogato.jpg' %}" alt="haggen" class="recipe-img">
+        <h2>Haagen-Dazs Mexican Hot Chocolate Ice Cream Sandwiches</h2>
+        <p class="description">Frozen hot chocolate and caramel come together to create a delicious dessert with just the right amount of spicy.</p>
+        <ul class="ingredients">
+          <li>1/4 cup dutch processed cocoa</li>
+          <li>1 teaspoon cinnamon</li>
+          <li>1 stick butter, room temperature</li>
+          <li>1 cup dark brown sugar</li>
+          <li>1 teaspoon vanilla extract</li>
+        </ul>
+        <!-- Link to the detailed recipe page -->
+        <a href="{% url 'scoopjoy:recipe_detail' 6 %}">
+
+          <button class="recipe-btn">Read More</button>
+        </a>
+      </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="recipe-container">
+    <!-- Recipe 1 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/lemon frose.jpg' %}" alt="lemon" class="recipe-img">
+      <h2>Lemon Frose</h2>
+      <p class="description">A little lemon, a little strawberry, and a lot of frosé fun!​​ Pour into a short glass. Top with a lemon slice and a fresh Outshine® Lemon Frozen Fruit Bar.</p>
+      <ul class="ingredients">
+        <li>water, surfactants</li>
+        <li>zinc pyrithione,</li>
+        <li>dimethicone</li>
+        <li> fragrances</li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 7 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+
+    <!-- Recipe 2 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/manjo tajin frozen mocktail.png' %}" alt="manjo" class="recipe-img">
+      <h2>Mango Tajin Frozen mocktail</h2>
+      <p class="description">Pep! Zing! It's Mango with Tajin! Tickle your taste buds with frozen chile lime heat.</p>
+      <ul class="ingredients">
+        <li>mango (fresh or frozen)</li>
+        <li>ice, Tajin seasoning</li>
+        <li> lime juice</li>
+        <li> honey or maple syrup</li>
+        <li>orange juice or seltzer. </li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 8 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+    <div class="recipe-card">
+        <img src="{% static 'images/MexicanHotChocolateIceCreamSandwiches.jpg' %}" alt="MexicanHotChocolateIceCreamSandwiches" class="recipe-img">
+        <h2>Mexican Hot Chocolate Ice Cream Sandwiches</h2>
+        <p class="description"> To assemble ice cream sandwiches, put a small scoop of barely softened ice cream between two cookies and gently press together. I normally use .</p>
+        <ul class="ingredients">
+          <li> Milk, cream, sugar</li>
+          <li>corn syrup</li>
+          <li>cocoa processed with alkal</li>
+          <li>Natural Flavor</li>
+          <li> guar gum, cellulose gel</li>
+        </ul>
+        <!-- Link to the detailed recipe page -->
+        <a href="{% url 'scoopjoy:recipe_detail' 9 %}">
+
+          <button class="recipe-btn">Read More</button>
+        </a>
+      </div>
+  </div>
+
+
+  <div class="recipe-container">
+    <!-- Recipe 1 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/Chocolate-Dipped-Raspberry-Bars.jpg' %}" alt="Chocolate-Dipped-Raspberry-Bars" class="recipe-img">
+      <h2>Raspberry Chocolate Dipped Bars</h2>
+      <p class="description">A creamy raspberry ice cream core coated in a rich chocolate layer, often with a raspberry swirl or sauce..</p>
+      <ul class="ingredients">
+        <li>raspberries (fresh or freeze-dried)</li>
+        <li>dark or milk chocolate</li>
+        <li>cocoa butter</li>
+        <li>milkfat</li>
+        <li>emulsifiers like soy lecithin</li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 10 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+
+    <!-- Recipe 2 -->
+    <div class="recipe-card">
+      <img src="{% static 'images/caramelized banna split rum salted caramel.jpg' %}" alt="caramelized" class="recipe-img">
+      <h2>Caramelized Banana Split Rum Salted Caramel</h2>
+      <p class="description">For a decadent dessert, that's quick and easy to make, try this caramelised banana split, topped with salted caramel ice-cream and drizzled with dark chocolate.</p>
+      <ul class="ingredients">
+        <li>caramelized bananas,</li>
+        <li>rum, salted caramel sauce</li>
+        <li>ice cream, and optional toppings like nuts</li>
+        <li>whipped cream</li>
+        <li>maraschino cherries</li>
+      </ul>
+      <!-- Link to the detailed recipe page -->
+      <a href="{% url 'scoopjoy:recipe_detail' 11 %}">
+
+        <button class="recipe-btn">Read More</button>
+      </a>
+    </div>
+    <div class="recipe-card">
+        <img src="{% static 'images/butter-pecan-sundae.png' %}" alt="butter-pecan-sundae" class="recipe-img">
+        <h2>Butter Pecan Pancake Ice Cream Sundae</h2>
+        <p class="description">These fluffy warm pancakes topped with creamy butter pecan ice cream and a rich maple caramel drizzle are perfect any day of the week.</p>
+        <ul class="ingredients">
+          <li>pancakes, butter pecan ice cream</li>
+          <li>flour, sugar, baking powder</li>
+          <li>milk, eggs, and oil, while the ice cream </li>
+          <li>caramel sauce, whipped cream,</li>
+          <li>chopped pecans, and possibly syrup</li>
+        </ul>
+        <!-- Link to the detailed recipe page -->
+        <a href="{% url 'scoopjoy:recipe_detail' 12 %}">
+
+          <button class="recipe-btn">Read More</button>
+        </a>
+      </div>
+  </div>
+  <div class="button-container">
+    <!-- Button that links to the second page -->
+    <a href="{% url 'scoopjoy:recipes_main' %}" class="btn">Home Recipe Ice Cream</a>
+</div>
+{% endblock %}
+

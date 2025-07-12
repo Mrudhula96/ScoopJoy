@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
+    .product-detail {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        background-color: #fff;
+        text-align: center;
+    }
+    .product-detail img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+    .add-to-cart-btn {
+        background-color: #FF6B6B;
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 1rem;
+        transition: background 0.3s;
+    }
+    .add-to-cart-btn:hover {
+        background-color: #e85c5c;
+    }
+    .cart-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    .quantity-btn {
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        background-color: #FF6B6B;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        margin: 0 0.5rem;
+    }
+    .quantity-btn:hover {
+        background-color: #e85c5c;
+    }
+    .quantity-value {
+        font-size: 1.2rem;
+        margin: 0 0.5rem;
+    }
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: white;
+        z-index: 1000;
+    }
+    .toast.error {
+        background: #e85c5c;
+    }
+    .toast.success {
+        background: #FF6B6B;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    
+document.addEventListener("DOMContentLoaded", () => {
+    const productId = {{ product.id }};
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    const cartControls = document.querySelector(".cart-buttons");
+    let cartCountElement = document.querySelector(".cart-count");
+
+    function showToast(message, type = 'error') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    function updateCartCount(count) {
+        if (cartCountElement) {
+            cartCountElement.textContent = count;
+        }
+    }
+
+    async function fetchCartCount() {
+        try {
+            const response = await fetch('/cart/count/', {
+                method: 'GET',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const data = await response.json();
+            updateCartCount(data.count);
+        } catch (err) {
+            console.error("Error fetching cart count:", err);
+        }
+    }
+
+    function updateUIAfterAdd(quantity) {
+        cartControls.innerHTML = `
+            <div class="cart-buttons">
+                <button class="quantity-btn decrement">-</button>
+                <span class="quantity-value">${quantity}</span>
+                <button class="quantity-btn increment">+</button>
+            </div>
+        `;
+        bindQuantityControls();
+    }
+
+    function revertToAddToCart() {
+        cartControls.innerHTML = `<button class="add-to-cart-btn">Add to Cart</button>`;
+        cartControls.querySelector(".add-to-cart-btn").addEventListener("click", handleAddToCart);
+    }
+
+    async function handleAddToCart() {
+        try {
+            const authResponse = await fetch('/api/check-auth/', {
+                method: 'GET',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+            const authData = await authResponse.json();
+
+            if (!authData.is_authenticated) {
+                showToast("Please log in to add items to your cart.");
+                window.location.href = `/login/?next=${encodeURIComponent(window.location.pathname)}`;
+                return;
+            }
+        } catch (err) {
+            showToast("Unable to verify session. Please try again.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`/cart/add/${productId}/`, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken,
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                showToast("Item added to cart!", "success");
+                updateCartCount(data.cart_count);
+                updateUIAfterAdd(1);
+            } else {
+                showToast(data.error || "Failed to add item to cart.");
+            }
+        } catch (err) {
+            showToast("Something went wrong. Please try again.");
+        }
+    }
+
+    function bindQuantityControls() {
+        const incrementBtn = cartControls.querySelector(".increment");
+        const decrementBtn = cartControls.querySelector(".decrement");
+        incrementBtn?.addEventListener("click", () => updateQuantity("increment"));
+        decrementBtn?.addEventListener("click", () => updateQuantity("decrement"));
+    }
+
+    async function updateQuantity(action) {
+        try {
+            const response = await fetch(`/cart/update/${productId}/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body: JSON.stringify({ action })
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                updateCartCount(data.cart_count);
+                if (data.quantity === 0) {
+                    revertToAddToCart();
+                } else {
+                    const quantityDisplay = cartControls.querySelector(".quantity-value");
+                    if (quantityDisplay) {
+                        quantityDisplay.textContent = data.quantity;
+                    }
+                }
+            } else {
+                showToast(data.error || "Failed to update quantity.");
+            }
+        } catch (err) {
+            showToast("Something went wrong. Please try again.");
+        }
+    }
+
+    const addToCartBtn = document.querySelector(".add-to-cart-btn");
+    if (addToCartBtn) addToCartBtn.addEventListener("click", handleAddToCart);
+    if (document.querySelector(".increment") && document.querySelector(".decrement")) bindQuantityControls();
+
+    fetchCartCount();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Add CSRF token in meta tag for JS -->
+<meta name="csrf-token" content="{{ csrf_token }}">
+
+<div class="product-detail">
+    <h1>{{ product.name }}</h1>
+
+    {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% endif %}
+
+    <p>{{ product.description }}</p>
+    <p><strong>Price: ₹{{ product.price }}</strong></p>
+
+    <div class="cart-buttons">
+        {% if cart_item %}
+            <div class="cart-buttons">
+                <button class="quantity-btn decrement">-</button>
+                <span class="quantity-value">{{ cart_item.quantity }}</span>
+                <button class="quantity-btn increment">+</button>
+            </div>
+        {% else %}
+            <button class="add-to-cart-btn">Add to Cart</button>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

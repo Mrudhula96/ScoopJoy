@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>ScoopJoy 🍦 -Sticks</title>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/iceCreamBars.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/products.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+
+<div class="products-container" id="productsContainer">
+    <!-- Products will be loaded here -->
+</div>
+
+<div id="viewCartBar" class="view-cart-bar hidden">
+    <span id="cartTotalItems">0 items</span>
+    <span id="cartTotalPrice">₹0</span>
+    <a href="{% url 'scoopjoy:cart' %}" class="view-cart-button">View Cart</a>
+</div>
+{% endblock %}

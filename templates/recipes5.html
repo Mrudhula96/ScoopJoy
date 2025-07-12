@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Fruity Strawberry Mango Ice Cream pie</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+  <header>
+    <h1>Fruity Strawberry Mango Ice Cream pie</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/FruityStrawberryMangoIceCreamPie.jpg' %}" alt="moon" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>2 cups fresh sliced strawberries</li>
+      <li>Whipped cream</li>
+      <li>1/2 cup of butter</li>
+      <li>1/3 cup of sugar</li>
+      <li>1/4 teaspoons almond extract</li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. Pie Crust Directions: Preheat oven to 350F. Use a handheld mixer to beat together butter and sugar. Add salt, vanilla, and egg yolk and mix until combined. Add flour and mix well. Chill for at least four hours, or overnight..</p>
+    <p>2. Press into a greased 9” tart pan and bake 9-10 minutes until lightly browned. Cool completely. Soften ice cream for at least 10 minutes. Spread ice cream over the crust and place into freezer for 30 minutes.</p>
+    <p>3. Remove from freezer, place strawberries on top of the ice cream and drizzle caramel (if using) over the pie. Keep in freezer until ready to serve.</p>
+    <p>4. For Caramel Sauce (optional): Combine brown sugar, cream and salt in a medium-sized saucepan over medium heat. Cook until thickened (about 5-7 minutes). Add vanilla, stir and let cool for a few minutes. Leftovers can be stored in a glass jar.</p>
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+
+
+
+{% endblock %}
+

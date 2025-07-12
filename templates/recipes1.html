@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Vanilla Ice Cream Brownie Bars</title>
+{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Vanilla Ice Cream Brownie Bars</h1>
+  </header>
+
+  <div class="recipe-detail-container">
+    <img src="{% static 'images/vanilla_icecream_brownie.jpg' %}" alt="vanilla_icecream_brownie" class="recipe-img-detail">
+    <h2>Ingredients</h2>
+    <ul class="ingredients">
+      <li>watermelon, chocolate,</li>
+      <li>toppings like salt. </li>
+      <li> nuts, or seeds</li>
+      <li>Cacao nibs, chia seeds, coconut flakes. </li>
+    </ul>
+    
+    <h2>Instructions</h2>
+    <p>1. For Brownies: Preheat oven to 350F. In a double boiler, melt chocolate and butter. Stir in sugar, eggs, and vanilla. Remove from heat; add flour and nuts. Place batter in a greased 13x9 pan. Bake 30-35 minutes or until a toothpick comes out clean. Cool.
+    </p>
+    <p>2. Let ice cream soften on the counter until it’s spreadable. Spread over brownies, and return to the freezer for 2 hours.</p>
+    <p>3.Top with hot fudge (directions below), cover, and refreeze for at least one hour, up to one day. Remove from the freezer 15 minutes before serving. Garnish with whipped cream.</p>
+    <p>4. For Hot Fudge: Combine cocoa powder and sugar in a medium saucepan. Whisk in cream and place over medium heat, until the mixture warms. Add butter, vanilla, and heat until right before boiling. Turn off the heat and allow mixture to cool for a few minutes. Fudge needs to be cooled for 2-3 hours before you can pipe it. Can be cooled in a glass jar.
+    </p>
+    <p>5. Fill a gallon plastic bag with fudge. Cut a small hole in one of the bag corners. Pipe out stripes of fudge diagonally across the brownie.</p>
+    
+    <a href="{% url 'scoopjoy:recipes' %}">
+      <button class="recipe-btn">Back to Recipes</button>
+    </a>
+  </div>
+
+{% endblock %}
+
+
